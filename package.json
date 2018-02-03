@@ -1,5 +1,5 @@
 {
-  "name": "jsshortid",
+  "name": "jsshortid-helper",
   "version": "0.1.0",
   "description": "a short id creator",
   "main": "index.js",
