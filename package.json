@@ -1,14 +1,14 @@
 {
-  "name": "jsshortid-helper",
+  "name": "jsShortId",
   "version": "0.1.0",
   "description": "a short id creator",
-  "main": "index.js",
+  "main": "jsShortId.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/centercao/jsShortId.githttps://github.com/centercao/jsShortId.git"
+    "url": "https://github.com/centercao/jsShortId.git"
   },
   "author": "centercao",
   "license": "MIT"
