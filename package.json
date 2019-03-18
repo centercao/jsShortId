@@ -1,8 +1,8 @@
 {
-  "name": "jsShortId",
-  "version": "0.1.0",
+  "name": "jsnodeid",
+  "version": "1.1.0",
   "description": "a short id creator",
-  "main": "jsShortId.js",
+  "main": "jsNodeId.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
