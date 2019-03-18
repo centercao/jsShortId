@@ -1,6 +1,14 @@
 /**
  * Created By Center on 2018/2/3
  **/
+ 
+	var _symbols = [
+		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+		'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+		'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+	var INC = 0;
 (function(root, factory){
   'use strict';
   if (typeof define === 'function' && define.amd) {
@@ -18,27 +26,21 @@
   }	
 }(this, function(){
 	var JsShortId = function () {
-	this.symbols = [
-		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-		'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-		'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 	}
-	JsShortId.prototype = {
-	gen: function (len) {
+return {
+	  gen: function (len) {
 		var _len = len || 8;
 		_len = _len < 8?8:_len;
 		var n = (new Date()).getTime();
 		var conversion = n.toString(36);
 		_len -=conversion.length;
 		while(_len){
-			conversion += this.symbols[Math.floor(Math.random() * 62)];
+			conversion += _symbols[Math.floor(Math.random() * 62)];
 			_len--;
 		}
 		return conversion;
 	},
-	getDate:function (sId,fmt) {
+	  getDate: function (sId,fmt) {
 		if(sId.length < 8){
 			return "";
 		}
@@ -57,19 +59,24 @@
 	for(var k in o)
 		if(new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 	return fmt;
+	},
+	  uuid:function () {
+		var _len = 15;
+		var n = (new Date()).getTime();
+		var conversion = n.toString(36);
+		var inc = (INC++).toString(36);
+		if(INC>46656){
+			INC = 0;
+		}
+		inc = "000".substr(inc.length) + inc;
+		conversion +=inc;
+		_len -=conversion.length;
+		while(_len){
+			conversion += _symbols[Math.floor(Math.random() * 62)];
+			_len--;
+		}
+		return conversion;
 	}
-
-};
-return {
-	  gen: function(opt) {
-		return new JsShortId().gen(opt);
-	  },
-	  getDate: function(sId,fmt) {
-		return new JsShortId().getDate(sId,fmt);
-	  },
-	  uuid:function(){
-		return new JsShortId().gen(15);
-	  }
 	};
 }));
  
